@@ -25,7 +25,11 @@ module.exports = {
       'gray-primary': '#3E4784',
       'gray-secondary': '#F8F9FC'
     },
-    extend: {}
+    extend: {
+      boxShadow: {
+        xs: '0px 1px 2px rgba(28, 31, 39, 0.05);'
+      }
+    }
   },
   plugins: []
 }

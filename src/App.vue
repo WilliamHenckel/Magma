@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <SidebarView />
-    <main><SectionView /></main>
+    <SectionView />
   </div>
 </template>
 
