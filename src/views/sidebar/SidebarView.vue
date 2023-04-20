@@ -1,5 +1,8 @@
 <template>
-  <div id="sidebarView" class="bg-neutral-900 h-screen py-8 px-6 flex flex-col justify-between">
+  <div
+    id="sidebarView"
+    class="bg-neutral-900 h-screen py-8 px-6 flex flex-col justify-between sticky top-0"
+  >
     <div>
       <div class="flex items-center space-x-2 mb-12">
         <NetflixIcon class="w-8 h-8" />

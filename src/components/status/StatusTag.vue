@@ -1,6 +1,7 @@
 <template>
   <div
-    :class="`${tagConfig.color[buttonColor].textColor} ${tagConfig.color[buttonColor].bgColor} ${tagConfig.size[buttonSize]}`"
+    :class="`${tagConfig.color[status].textColor} ${tagConfig.color[status].bgColor} ${tagConfig.size[buttonSize]}`"
+    class="w-min"
   >
     {{ buttonText }}
   </div>
@@ -12,27 +13,27 @@ export default {
     return {
       tagConfig: {
         color: {
-          red: {
+          overbooked: {
             bgColor: 'bg-red-secondary',
             textColor: 'text-red-primary'
           },
-          purple: {
+          'highly-active': {
             bgColor: 'bg-purple-secondary',
             textColor: 'text-purple-primary'
           },
-          green: {
+          active: {
             bgColor: 'bg-green-secondary',
             textColor: 'text-green-primary'
           },
-          blue: {
+          observer: {
             bgColor: 'bg-blue-secondary',
             textColor: 'text-blue-primary'
           },
-          orange: {
+          sleeper: {
             bgColor: 'bg-orange-secondary',
             textColor: 'text-orange-primary'
           },
-          gray: {
+          invited: {
             bgColor: 'bg-gray-secondary',
             textColor: 'text-gray-primary'
           }
@@ -46,7 +47,7 @@ export default {
   },
 
   props: {
-    buttonColor: {
+    status: {
       type: String
     },
     buttonSize: {

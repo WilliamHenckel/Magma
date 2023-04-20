@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center mt-5">
       <div class="flex items-center">
         <h1 class="text-2xl mr-6">{{ title }}</h1>
-        <StatusTag :button-color="'green'" :button-size="'sm'" :button-text="'Published'" />
+        <StatusTag :status="'active'" :button-size="'sm'" :button-text="'Published'" />
       </div>
       <ButtonSlot>
         <template #icon>
