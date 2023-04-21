@@ -18,11 +18,11 @@
     <td class="p-3">
       <StatusTag :status="helper.status" :button-size="'xs'" :button-text="helper.status" />
     </td>
-    <td class="p-3">{{ helper.relations }}</td>
-    <td class="p-3">{{ helper.points }}</td>
-    <td class="p-3">{{ helper.joinedOn }}</td>
-    <td class="p-3">{{ helper.userCriteria[0].value }}</td>
-    <td class="p-3">{{ helper.userCriteria[1].value }}</td>
+    <ArrayItemDisplay :item="String(helper.relations)" />
+    <ArrayItemDisplay :item="String(helper.points)" />
+    <ArrayItemDisplay :item="helper.joinedOn" :is-date="true" />
+    <ArrayItemDisplay :item="helper.userCriteria[0].value" />
+    <ArrayItemDisplay :item="helper.userCriteria[1].value" />
   </tr>
   <NoResult v-if="filteredHelpers.length === 0" :searched-helper="searchedHelper" />
 </template>
@@ -30,11 +30,13 @@
 <script lang="ts">
 import StatusTag from '@/components/status/StatusTag.vue'
 import NoResult from '@/components/search/NoResult.vue'
+import ArrayItemDisplay from './ArrayItemDisplay.vue'
 
 export default {
   components: {
     StatusTag,
-    NoResult
+    NoResult,
+    ArrayItemDisplay
   },
 
   props: {
@@ -43,6 +45,12 @@ export default {
     },
     searchedHelper: {
       type: String
+    },
+    rowPerPage: {
+      type: Number
+    },
+    selectedPage: {
+      type: Number
     }
   },
 
@@ -50,15 +58,30 @@ export default {
     filteredHelpers() {
       let filteredHelpers = this.dataArray
 
+      // Filter by user input
       filteredHelpers = filteredHelpers.filter(
         (helper) =>
           helper.firstname.toLowerCase().includes(this.searchedHelper) ||
           helper.lastname.toLowerCase().includes(this.searchedHelper)
       )
 
+      // Sort by number of points
       filteredHelpers.sort((a, b) => (a.points > b.points ? -1 : 1))
 
-      return filteredHelpers
+      // Slice by user selection & page selection
+      let numberedHelpers
+      if (this.rowPerPage != 0) {
+        numberedHelpers = filteredHelpers.slice(
+          (this.selectedPage - 1) * this.rowPerPage,
+          this.selectedPage * this.rowPerPage
+        )
+        // numberedHelpers = filteredHelpers.slice(this.selectedPage - 1, this.rowPerPage)
+        // console.log(this.selectedPage - 1)
+      } else {
+        numberedHelpers = filteredHelpers.slice(0)
+      }
+
+      return numberedHelpers
     }
   }
 }

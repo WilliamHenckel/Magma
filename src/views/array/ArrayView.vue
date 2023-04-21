@@ -5,28 +5,55 @@
         <td class="pl-6 py-3">Helper</td>
         <td class="p-3">Status</td>
         <td class="p-3">Relation</td>
-        <td class="p-3">Points</td>
+        <td class="p-3 flex items-center space-x-1">
+          <span>Points</span>
+          <ArrowIcon css-class="stroke-text-icon-secondary" class="w-2.5 h-2.5" />
+        </td>
         <td class="p-3">Joined on</td>
         <td class="p-3">Strong Criteria</td>
         <td class="p-3">Medium Criteria</td>
       </tr>
-      <ArrayItem :searched-helper="searchedHelper" :data-array="jsonData.helpers" />
+      <ArrayItem
+        :searched-helper="searchedHelper"
+        :data-array="jsonData.helpers"
+        :row-per-page="rowPerPage"
+        :selected-page="selectedPage"
+      />
+      <PaginationView
+        :helperCounter="jsonData.helpers.length"
+        @pageSelected="
+          ($event) => {
+            selectedPage = $event
+          }
+        "
+        @updateSelect="
+          ($event) => {
+            rowPerPage = $event
+          }
+        "
+      />
     </table>
   </div>
 </template>
 
 <script lang="ts">
+import ArrowIcon from '@/components/icons/ArrowIcon.vue'
 import ArrayItem from './ArrayItem.vue'
+import PaginationView from '@/components/pagination/PaginationView.vue'
 import json from './data.json'
 
 export default {
   components: {
-    ArrayItem
+    ArrowIcon,
+    ArrayItem,
+    PaginationView
   },
 
   data() {
     return {
-      jsonData: json
+      jsonData: json,
+      rowPerPage: 25,
+      selectedPage: 1
     }
   },
 
