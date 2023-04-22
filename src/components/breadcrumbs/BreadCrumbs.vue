@@ -16,7 +16,8 @@
 export default {
   props: {
     path: {
-      type: Array
+      type: Array,
+      default: () => []
     }
   }
 }

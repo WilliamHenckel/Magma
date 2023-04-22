@@ -15,7 +15,8 @@ export default {
 
   props: {
     item: {
-      type: String
+      type: String,
+      default: ''
     },
     isDate: {
       type: Boolean,

@@ -38,7 +38,8 @@ export default {
 
   props: {
     searchedHelper: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 }

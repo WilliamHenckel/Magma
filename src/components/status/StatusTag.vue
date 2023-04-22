@@ -48,13 +48,16 @@ export default {
 
   props: {
     status: {
-      type: String
+      type: String,
+      default: ''
     },
     buttonSize: {
-      type: String
+      type: String,
+      default: ''
     },
     buttonText: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 }

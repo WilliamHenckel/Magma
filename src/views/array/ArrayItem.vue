@@ -41,16 +41,20 @@ export default {
 
   props: {
     dataArray: {
-      type: Array
+      type: Array,
+      default: () => []
     },
     searchedHelper: {
-      type: String
+      type: String,
+      default: ''
     },
     rowPerPage: {
-      type: Number
+      type: Number,
+      default: 25
     },
     selectedPage: {
-      type: Number
+      type: Number,
+      default: 1
     }
   },
 

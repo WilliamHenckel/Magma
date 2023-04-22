@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+/* eslint-disable */
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'], // Remove unused styles in production build
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
