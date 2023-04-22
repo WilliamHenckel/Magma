@@ -1,6 +1,6 @@
 <template>
   <tr
-    v-for="(helper, key) in filteredHelpers"
+    v-for="(helper, key) in searchedHelper.length >= 1 ? filteredHelpers : paginatedHelpers"
     :key="key"
     class="border-b border-neutral-200 hover:bg-neutral-50 hover:cursor-pointer"
   >
@@ -65,20 +65,24 @@ export default {
           helper.lastname.toLowerCase().includes(this.searchedHelper)
       )
 
+      return filteredHelpers
+    },
+
+    paginatedHelpers() {
+      let paginatedHelpers = this.dataArray
+
       // Sort by number of points
-      filteredHelpers.sort((a, b) => (a.points > b.points ? -1 : 1))
+      paginatedHelpers.sort((a, b) => (a.points > b.points ? -1 : 1))
 
       // Slice by user selection & page selection
       let numberedHelpers
       if (this.rowPerPage != 0) {
-        numberedHelpers = filteredHelpers.slice(
+        numberedHelpers = paginatedHelpers.slice(
           (this.selectedPage - 1) * this.rowPerPage,
           this.selectedPage * this.rowPerPage
         )
-        // numberedHelpers = filteredHelpers.slice(this.selectedPage - 1, this.rowPerPage)
-        // console.log(this.selectedPage - 1)
       } else {
-        numberedHelpers = filteredHelpers.slice(0)
+        numberedHelpers = paginatedHelpers.slice(0)
       }
 
       return numberedHelpers
