@@ -8,11 +8,11 @@
       <img
         :src="helper.profilePictureUrl"
         :alt="`${helper.firstname}-${helper.lastname}`"
-        class="rounded-full w-8 h-8 mr-3"
+        class="rounded-full w-8 h-8 mr-3 hidden lg:block"
       />
       <div>
         <p class="text-text-icon-primary">{{ helper.firstname }} {{ helper.lastname }}</p>
-        <p class="text-xs">{{ helper.email }}</p>
+        <p class="hidden lg:block text-xs">{{ helper.email }}</p>
       </div>
     </td>
     <td class="p-3">

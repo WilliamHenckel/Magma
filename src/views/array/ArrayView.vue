@@ -2,16 +2,18 @@
   <div class="border border-neutral-200 rounded-xl overflow-hidden shadow-xs">
     <table class="border-collapse w-full text-text-icon-secondary text-sm">
       <tr class="bg-neutral-50 border-b border-neutral-200 text-xs">
-        <td class="pl-6 py-3">Helper</td>
-        <td class="p-3">Status</td>
-        <td class="p-3">Relation</td>
-        <td class="p-3 flex items-center space-x-1">
-          <span>Points</span>
-          <ArrowIcon css-class="stroke-text-icon-secondary" class="w-2.5 h-2.5" />
+        <td class="pl-6 py-1 lg:py-3">Helper</td>
+        <td class="p-1 lg:p-3">Status</td>
+        <td class="p-1 lg:p-3">Relation</td>
+        <td class="p-1 lg:p-3">
+          <div class="flex items-center space-x-2">
+            <span>Points</span>
+            <ArrowIcon css-class="stroke-text-icon-secondary" class="w-2.5 h-2.5" />
+          </div>
         </td>
-        <td class="p-3">Joined on</td>
-        <td class="p-3">Strong Criteria</td>
-        <td class="p-3">Medium Criteria</td>
+        <td class="hidden lg:table-cell p-3">Joined on</td>
+        <td class="p-1 lg:p-3">Strong Criteria</td>
+        <td class="p-1 lg:p-3">Medium Criteria</td>
       </tr>
       <ArrayItem
         :searched-helper="searchedHelper"

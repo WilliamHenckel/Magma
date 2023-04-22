@@ -1,6 +1,8 @@
 <template>
-  <td v-if="!isDate" class="p-3">{{ item || '-' }}</td>
-  <td v-else class="p-3">{{ item ? dayjs(item).format('MMM. DD, YYYY') : '-' }}</td>
+  <td v-if="!isDate" class="p-1 lg:p-3">{{ item || '-' }}</td>
+  <td v-else class="hidden lg:block lg:p-3">
+    {{ item ? dayjs(item).format('MMM. DD, YYYY') : '-' }}
+  </td>
 </template>
 
 <script lang="ts">
